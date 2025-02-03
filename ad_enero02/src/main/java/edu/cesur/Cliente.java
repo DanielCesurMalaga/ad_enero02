@@ -96,11 +96,11 @@ public class Cliente {
 
     public boolean insertarVisita(Date nuevaVisita) {
         // se da por hecho que no hay huecos intermedios.
-        eliminarVisitasPasadas();
         int hueco = 0;
         while (hueco < (visitas.length)) {
             if (visitas[hueco] == null) {
                 visitas[hueco] = nuevaVisita;
+                this.ordenarVisitas();
                 return true;
             }
             hueco++;
@@ -108,12 +108,25 @@ public class Cliente {
         return false;
     }
 
-    public void eliminarVisitasPasadas() {
-
-    }
 
     public void ordenarVisitas() {
+        // array ordenado de más antiguo a más moderno
 
+        Date visitaTemp;
+        int i = 0;
+        int j;
+        while ((i < visitas.length) && (visitas[i] != null)) {
+            j = 1;
+            while (j < (visitas.length - i) && (visitas[j] != null)) {
+                if (visitas[j - 1].compareTo(visitas[j]) > 0) {
+                    visitaTemp = visitas[j - 1];
+                    visitas[j - 1] = visitas[j];
+                    visitas[j] = visitaTemp;
+                }
+                j++;
+            }
+            i++;
+        }
     }
 
     @Override
