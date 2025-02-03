@@ -1,6 +1,7 @@
 package edu.cesur;
 
 import java.util.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -123,18 +124,9 @@ public class Main {
         if (!idEmpresa.equals(""))
             mCliente.setIdEmpresa(Integer.parseInt(idEmpresa));
 
-        System.out.print("Introduce fecha nueva cita (formato: aaaa/mm/dd): ");
-        String nuevaCita = teclado.nextLine();
 
-        if (!nuevaCita.equals("")) {
-            gestorCliente.update(mCliente.getId(), mCliente.getNombre(), mCliente.getApellido1(),
-                    mCliente.getApellido2(), mCliente.getComercialPrincipal(), mCliente.getIdEmpresa(),
-                    new Date(nuevaCita));
-        } else {
-            gestorCliente.update(mCliente.getId(), mCliente.getNombre(), mCliente.getApellido1(),
-                    mCliente.getApellido2(), mCliente.getComercialPrincipal(), mCliente.getIdEmpresa(),
-                    null);
-        }
+        gestorCliente.update(mCliente.getId(),mCliente.getNombre(),mCliente.getApellido1(), 
+        mCliente.getApellido2(), mCliente.getComercialPrincipal(), mCliente.getIdEmpresa());;
         System.out.println();
     }
 

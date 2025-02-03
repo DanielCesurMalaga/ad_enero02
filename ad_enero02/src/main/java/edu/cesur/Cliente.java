@@ -1,7 +1,13 @@
 package edu.cesur;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Date;
+=======
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+>>>>>>> visitasConList
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +27,22 @@ public class Cliente {
     private String apellido2;
     private String comercialPrincipal;
     private int idEmpresa;
+<<<<<<< HEAD
     private Date[] visitas;
 
     private final static int MAX_VISITAS = 5;
+=======
+    private List<Date> visitas;
+>>>>>>> visitasConList
 
     // constructores
 
     public Cliente() {
+<<<<<<< HEAD
         this.visitas = new Date[MAX_VISITAS];
+=======
+        visitas = new ArrayList<Date>();
+>>>>>>> visitasConList
     }
 
     public Cliente(String nombre, String apellido1, String apellido2, String comercialPrincipal, int idEmpresa) {
@@ -37,7 +51,11 @@ public class Cliente {
         this.apellido2 = apellido2;
         this.comercialPrincipal = comercialPrincipal;
         this.idEmpresa = idEmpresa;
+<<<<<<< HEAD
         this.visitas = new Date[MAX_VISITAS];
+=======
+        visitas = new ArrayList<Date>();
+>>>>>>> visitasConList
     }
 
     // getters y setters
@@ -86,6 +104,7 @@ public class Cliente {
         this.idEmpresa = idEmpresa;
     }
 
+<<<<<<< HEAD
     public Date[] getVisitas() {
         return visitas;
     }
@@ -127,13 +146,40 @@ public class Cliente {
             }
             i++;
         }
+=======
+    public List<Date> getVisitas() {
+        return visitas;
+    }
+
+    public void setVisitas(List<Date> visitas) {
+        this.visitas = visitas;
+    }
+
+    public void insertarVisita(Date visita){
+        visitas.add(visita);
+>>>>>>> visitasConList
     }
 
     @Override
     public String toString() {
         return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
+<<<<<<< HEAD
                 + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + ", visitas="
                 + Arrays.toString(visitas) + "]";
     }
 
+=======
+                + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + ", visitas=" + visitas
+                + "]";
+    }
+
+
+
+    
+
+    
+
+
+    
+>>>>>>> visitasConList
 }
