@@ -1,6 +1,7 @@
 package edu.cesur;
 
 import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 public class GestorCliente {
@@ -22,11 +23,7 @@ public class GestorCliente {
         
     }
 
-<<<<<<< HEAD
-    public void update(Long id,String nombre, String apellido1, String apellido2, String comercialPrincipal, Integer idEmpresa, Date nuevaCita){
-=======
-    public void update(Long id,String nombre, String apellido1, String apellido2, String comercialPrincipal, Integer idEmpresa, Date visita){
->>>>>>> visitasConList
+    public void update(Long id,String nombre, String apellido1, String apellido2, String comercialPrincipal, Integer idEmpresa){
         Cliente miCliente = GestorPpal.entityManager.find(Cliente.class, id);
 
         if (nombre != null) miCliente.setNombre(nombre);
@@ -34,11 +31,6 @@ public class GestorCliente {
         if (apellido2 != null) miCliente.setApellido2(apellido2);
         if (comercialPrincipal != null) miCliente.setComercialPrincipal(comercialPrincipal);
         if (idEmpresa != null) miCliente.setIdEmpresa(idEmpresa);
-<<<<<<< HEAD
-        if (nuevaCita != null) miCliente.insertarVisita(nuevaCita);
-=======
-        if (visita != null) miCliente.insertarVisita(visita);
->>>>>>> visitasConList
 
         GestorPpal.entityManager.getTransaction().begin();
         GestorPpal.entityManager.merge(miCliente);
