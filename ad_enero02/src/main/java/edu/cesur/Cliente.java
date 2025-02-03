@@ -1,5 +1,8 @@
 package edu.cesur;
 
+import java.util.Arrays;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,15 +15,20 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String apellido1;
     private String apellido2;
     private String comercialPrincipal;
     private int idEmpresa;
+    private Date[] visitas;
+
+    private final static int MAX_VISITAS = 5;
 
     // constructores
 
     public Cliente() {
+        this.visitas = new Date[MAX_VISITAS];
     }
 
     public Cliente(String nombre, String apellido1, String apellido2, String comercialPrincipal, int idEmpresa) {
@@ -29,6 +37,7 @@ public class Cliente {
         this.apellido2 = apellido2;
         this.comercialPrincipal = comercialPrincipal;
         this.idEmpresa = idEmpresa;
+        this.visitas = new Date[MAX_VISITAS];
     }
 
     // getters y setters
@@ -77,16 +86,41 @@ public class Cliente {
         this.idEmpresa = idEmpresa;
     }
 
+    public Date[] getVisitas() {
+        return visitas;
+    }
+
+    public void setVisitas(Date[] visitas) {
+        this.visitas = visitas;
+    }
+
+    public boolean insertarVisita(Date nuevaVisita) {
+        // se da por hecho que no hay huecos intermedios.
+        eliminarVisitasPasadas();
+        int hueco = 0;
+        while (hueco < (visitas.length)) {
+            if (visitas[hueco] == null) {
+                visitas[hueco] = nuevaVisita;
+                return true;
+            }
+            hueco++;
+        }
+        return false;
+    }
+
+    public void eliminarVisitasPasadas() {
+
+    }
+
+    public void ordenarVisitas() {
+
+    }
+
     @Override
     public String toString() {
         return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
-                + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + "]";
+                + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + ", visitas="
+                + Arrays.toString(visitas) + "]";
     }
 
-    
-
-    
-
-
-    
 }
