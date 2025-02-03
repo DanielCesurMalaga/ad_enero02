@@ -1,5 +1,9 @@
 package edu.cesur;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +21,12 @@ public class Cliente {
     private String apellido2;
     private String comercialPrincipal;
     private int idEmpresa;
+    private List<Date> visitas;
 
     // constructores
 
     public Cliente() {
+        visitas = new ArrayList<Date>();
     }
 
     public Cliente(String nombre, String apellido1, String apellido2, String comercialPrincipal, int idEmpresa) {
@@ -29,6 +35,7 @@ public class Cliente {
         this.apellido2 = apellido2;
         this.comercialPrincipal = comercialPrincipal;
         this.idEmpresa = idEmpresa;
+        visitas = new ArrayList<Date>();
     }
 
     // getters y setters
@@ -77,11 +84,26 @@ public class Cliente {
         this.idEmpresa = idEmpresa;
     }
 
+    public List<Date> getVisitas() {
+        return visitas;
+    }
+
+    public void setVisitas(List<Date> visitas) {
+        this.visitas = visitas;
+    }
+
+    public void insertarVisita(Date visita){
+        visitas.add(visita);
+    }
+
     @Override
     public String toString() {
         return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
-                + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + "]";
+                + ", comercialPrincipal=" + comercialPrincipal + ", idEmpresa=" + idEmpresa + ", visitas=" + visitas
+                + "]";
     }
+
+
 
     
 
